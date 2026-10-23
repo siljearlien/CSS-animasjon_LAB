@@ -120,132 +120,156 @@ main{
       position: absolute;
       top: 282px;
       left: 20px;
+     
       /*Animering*/
-      /*navn..........*/
-      /*varighet..........*/
-      /*rettning på animajonen..........*/
-      /*hva skjer når animasjon avsluttes..........*/
-      /*hvor mange ganger skal animasjonen gjentas..........*/
-      /*hvordan skal tiden være fordelt på animasjonen..........*/
+
+    animation-name: ghost, ghostColor;       /*navn..........*/
+	animation-duration: 10s, 2s;   /*varighet..........*/
+	animation-direction: alternate; /*hva skjer når animasjon avsluttes..........*/
+	animation-fill-mode: forwards; /*rettning på animajonen..........*/
+    animation-timing-function: linear; /*hvordan skal tiden være fordelt på animasjonen..........*/
+	animation-iteration-count: infinite; /*hvor mange ganger skal animasjonen gjentas..........*/
+
+      
+      
 }
 
 /* STEG 1 – Lag en animasjonsfunksjon for spøkelset som beveger seg rundt banen.
    Ta utgangspunkt i 0, 10, 20, 30, 40 … 100 når du setter keyframes. */
 
-   /*........*/ ghost {
+   @keyframes ghost{
 
     /* START
        Bruk startposisjonen definert i .fa-ghost (samme x og y som der). */
-    ... {
-      ....: ....;  /* x = startverdi fra .fa-ghost */
-      ....: ....;  /* y = startverdi fra .fa-ghost */
-    }
+    0% {
+        left: 20px;/* x = startverdi fra .fa-ghost */
+        top: 282px; /* y = startverdi fra .fa-ghost */
+  
+    } 
   
     /* TRINN 2
        Beveg spøkelset HØYRE ca. 309px fra startposisjon.
        Hold høyden (y) uendret. */
-    ... {
-      ....: ....;  /* x = start + ~309px */
-      ....: ....;  /* y = uendret */
+    10% {
+      left: 329px;  /* x = start + ~309px */
+      top: 282px;  /* y = uendret */
     }
   
     /* TRINN 3
        Behold x uendret (samme som forrige trinn).
        Beveg OPP ca. 270px (fra midthøyde til øverste løype). */
-    ... {
-      ....: ....;  /* x = uendret */
-      ....: ....;  /* y = opp ~270px */
+    20% {
+      left: 329px;  /* x = uendret */
+      top: 552px ;  /* y = opp ~270px */
     }
   
     /* TRINN 4
        Beveg HØYRE ca. 192px langs øverste løype.
        Hold y uendret (fortsatt øverst). */
-    ... {
-      ....: ....;  /* x = forrige + ~192px */
-      ....: ....;  /* y = uendret (øverst) */
+    30% {
+      left:521px;  /* x = forrige + ~192px */
+      top:521px;  /* y = uendret (øverst) */
     }
   
     /* TRINN 5
        Behold x uendret.
        Beveg NED ca. 270px tilbake til midthøyde. */
-    ... {
-      ....: ....;  /* x = uendret */
-      ....: ....;  /* y = ned ~270px (til midthøyde) */
+    40% {
+      left:521px;  /* x = uendret */
+      top: 251px;  /* y = ned ~270px (til midthøyde) */
     }
   
     /* TRINN 6
        Beveg HØYRE ca. 299px langs midthøyden til høyre side.
        Hold y uendret. */
-    ... {
-      ....: ....;  /* x = forrige + ~299px */
-      ....: ....;  /* y = uendret (midthøyde) */
+    50% {
+      left: 820px;  /* x = forrige + ~299px */
+      top: 251px;  /* y = uendret (midthøyde) */
     }
   
     /* TRINN 7
        Behold x uendret (ytterst til høyre).
        Beveg NED ca. 256px til nederste løype. */
-    ... {
-      ....: ....;  /* x = uendret (helt til høyre) */
-      ....: ....;  /* y = ned ~256px (nederste løype) */
+    60% {
+      left: 820px; /* x = uendret (helt til høyre) */
+      top: -5px;  /* y = ned ~256px (nederste løype) */
     }
   
     /* TRINN 8
        Beveg VENSTRE ca. 493px langs nederste løype.
        Hold y uendret (nederst). */
-    ... {
-      ....: ....;  /* x = forrige − ~493px */
-      ....: ....;  /* y = uendret (nederst) */
+    70% {
+      left: 327px;  /* x = forrige − ~493px */
+      top: -5px;  /* y = uendret (nederst) */
     }
   
     /* TRINN 9
        Behold x uendret (indre venstreside).
        Beveg OPP ca. 256px tilbake til midthøyde. */
-    ... {
-      ....: ....;  /* x = uendret (indre venstre) */
-      ....: ....;  /* y = opp ~256px (midthøyde) */
+    80% {
+      left: 327px;  /* x = uendret (indre venstre) */
+      top: 251px;  /* y = opp ~256px (midthøyde) */
     }
   
     /* TRINN 10
        Beveg VENSTRE ca. 307px tilbake mot startens venstreposisjon.
        Hold y uendret (midthøyde). */
-    ... {
-      ....: ....;  /* x = forrige − ~307px (tilbake mot start-x) */
-      ....: ....;  /* y = uendret (midthøyde) */
+    90% {
+      left: 20px;  /* x = forrige − ~307px (tilbake mot start-x) */
+      top: 251px;  /* y = uendret (midthøyde) */
     }
   
     /* TRINN 11 (slutten av runden)
        Beveg HØYRE ca. 307px til «indre venstreside» (mellompunkt før neste runde).
        Hold y uendret (midthøyde). */
-    ... {
-      ....: ....;  /* x = forrige + ~307px (indre venstre) */
-      ....: ....;  /* y = uendret (midthøyde) */
+    100% {
+      left: 327px;  /* x = forrige + ~307px (indre venstre) */
+      top: 251px;  /* y = uendret (midthøyde) */
     }
   }
   
+
+  @keyframes ghostColor{
+    from{
+        color: #ffdb1a;
+    }
+    to{
+        color: #FF1493;
+    }
+  }
+
   /* Husk:
      – Legg animasjonen på .fa-ghost (name, duration, iteration-count, direction, timing-function, fill-mode).
      – Fargeanimasjonen (ani-color) lages som egen @keyframes og kan kjøres parallelt. */
+
+
+    
   
 /*BONUS*/
 /*Få pacman til å jage, eller gå i en rute som går i mot ghost*/
-/*#pacman{
-
+#pacman{
     background-image: url('../img/eat.png');
     background-size: cover;
+        position: absolute;
+        top: 282px;
+        left: 20px;
     width: 30px;
     height: 30px;
     transform: rotate(30deg);
-    animation-name: .....;
-    animation-duration: 0.4s;
-    animation-iteration-count: infinite;
+
+    animation-name: pacman, ghost;
+    animation-duration: 1s, 10s;
+    animation-delay:0s, 0.4s;
+    animation-direction: alternate; 
+    animation-iteration-count: infinite, infinite;
     animation-timing-function: ease-in-out;
 }
 
-..... pacman{
+@keyframes pacman{
     from{
         background-image: url('../img/eat.png');
     }
     to{
         background-image: url('../img/close.png');
     }
-}*/
+}
